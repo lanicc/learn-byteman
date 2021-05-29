@@ -1,0 +1,9 @@
+RULE atSynchronizeCodeBlock
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD sync
+AT SYNCHRONIZE
+IF true
+    DO
+        traceln("Before enter synchronized code block");
+ENDRULE
+

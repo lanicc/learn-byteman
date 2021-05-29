@@ -1,0 +1,50 @@
+# 写obj.field
+RULE atWrite
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD write(int)
+AT WRITE timestamp
+IF true
+    DO
+        traceln("Write TestRunner.timestamp: " + $0.timestamp);
+ENDRULE
+
+# 写静态变量
+RULE atWriteStatic
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD write(int)
+AT WRITE io.github.lanicc.byteman.test.run.EventsTestRunner.NAME
+IF true
+    DO
+        traceln("Write TestRunner.NAME: " + io.github.lanicc.byteman.test.run.EventsTestRunner.NAME);
+ENDRULE
+
+# 写数组
+RULE atWriteArray
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD write(int)
+AT WRITE ids
+IF true
+    DO
+        traceln("Write TestRunner.ids (Array): " + $0.ids[0]);
+ENDRULE
+
+# 写方法局部变量
+RULE atWriteLocalVariable
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD write(int)
+AT WRITE $localVar
+IF true
+    DO
+        traceln("Write local variable: " + $localVar);
+ENDRULE
+
+# 写方法参数
+RULE atWriteMethodVariable
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD write(int)
+AT WRITE $1
+#AT WRITE $i
+IF true
+    DO
+        traceln("Write method parameter: " + $1);
+ENDRULE

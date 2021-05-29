@@ -1,0 +1,9 @@
+RULE atExceptionExit
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD throwExceptionExit
+AT EXCEPTION EXIT
+IF true
+    DO
+        traceln("Exception exit.");
+ENDRULE
+

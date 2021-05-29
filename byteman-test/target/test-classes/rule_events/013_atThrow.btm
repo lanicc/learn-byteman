@@ -1,0 +1,9 @@
+RULE atThrow
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD throwException
+AT THROW
+IF true
+    DO
+        traceln("Before throw RuntimeException");
+ENDRULE
+

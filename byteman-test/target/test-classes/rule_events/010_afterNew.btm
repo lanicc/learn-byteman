@@ -1,0 +1,17 @@
+RULE afterNew
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD newObj
+AFTER NEW Object
+IF true
+    DO
+        traceln("After new Object");
+ENDRULE
+
+RULE afterNew2
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD newObj
+AFTER NEW
+IF true
+    DO
+        traceln("After new");
+ENDRULE

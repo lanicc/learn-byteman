@@ -1,0 +1,19 @@
+RULE atNew
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD newObj
+AT NEW Object
+IF true
+    DO
+        traceln("Before new Object");
+ENDRULE
+
+
+
+RULE atNew2
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD newObj
+AT NEW
+IF true
+    DO
+        traceln("Before new");
+ENDRULE

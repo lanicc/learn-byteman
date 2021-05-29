@@ -1,0 +1,50 @@
+# 读obj.field
+RULE atRead
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD read(int)
+AT READ timestamp
+IF true
+    DO
+        trace("Read TestRunner.timestamp: ");
+ENDRULE
+
+# 读静态变量
+RULE atReadStatic
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD read(int)
+AT READ io.github.lanicc.byteman.test.run.EventsTestRunner.NAME
+IF true
+    DO
+        trace("Read TestRunner.NAME: ");
+ENDRULE
+
+# 读数组
+RULE atReadArray
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD read(int)
+AT READ ids
+IF true
+    DO
+        trace("Read TestRunner.ids (Array): ");
+ENDRULE
+
+# 读方法局部变量
+RULE atReadLocalVariable
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD read(int)
+AT READ $localVar
+IF true
+    DO
+        trace("Read local variable: ");
+ENDRULE
+
+# 读方法参数
+RULE atReadMethodVariable
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD read(int)
+AT READ $1
+#AT READ $i
+IF true
+    DO
+        trace("Read method parameter: ");
+ENDRULE

@@ -1,0 +1,14 @@
+RULE ruleBindings
+CLASS io.github.lanicc.byteman.test.run.BindingsTestRunner
+METHOD run
+AT READ io.github.lanicc.byteman.test.run.BindingsTestRunner.id
+BIND runner:BindingsTestRunner = $0;
+    id:int = runner.id;
+    tid:long = runner.thread.getId();
+    tName:String = runner.thread.getName();
+    sum:int = runner.add(1, 2);
+IF true
+    DO
+        traceln(" id: " + id + "\n threadId: " + tid + "\n threadName: " + tName);
+        traceln(" sum: " + sum);
+ENDRULE

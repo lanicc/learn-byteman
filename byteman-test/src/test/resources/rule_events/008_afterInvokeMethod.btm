@@ -1,0 +1,8 @@
+RULE afterInvokeMethod
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD run
+AFTER INVOKE java.lang.Thread.interrupt
+IF true
+    DO
+        traceln("After invoke Thread.interrupt");
+ENDRULE

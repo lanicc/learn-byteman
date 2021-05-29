@@ -1,0 +1,9 @@
+RULE atExitMethod
+CLASS io.github.lanicc.byteman.test.run.EventsTestRunner
+METHOD run(int)
+AT ENTRY
+IF true
+    DO
+        traceln("Exit method run(int), args: " + $1);
+        traceln("Exit method run(int), args: " + $i);
+ENDRULE

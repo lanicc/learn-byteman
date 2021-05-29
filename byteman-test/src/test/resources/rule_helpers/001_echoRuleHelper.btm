@@ -1,0 +1,8 @@
+RULE echoHelper
+CLASS org.lanicc.byteman.run.HelperTestRunner
+METHOD run
+HELPER org.lanicc.byteman.helper.EchoHelper
+AT ENTRY
+IF true
+    DO traceln("Enter run method");
+ENDRULE
